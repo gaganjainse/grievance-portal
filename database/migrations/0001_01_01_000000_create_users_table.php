@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('phone', 15)->nullable();
             $table->string('aadhaar', 12)->nullable()->unique();
             $table->enum('role', ['citizen', 'officer', 'admin'])->default('citizen');
-            $table->foreignId('department_id')->nullable()->constrained()->nullOnDelete();
+            $table->unsignedBigInteger('department_id')->nullable();
             $table->boolean('is_active')->default(true);
             $table->rememberToken();
             $table->timestamps();

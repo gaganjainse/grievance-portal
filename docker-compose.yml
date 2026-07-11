@@ -1,0 +1,51 @@
+services:
+  app:
+    build: .
+    container_name: grievance-app
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    working_dir: /app
+    depends_on:
+      mysql:
+        condition: service_healthy
+    entrypoint: ["sh", "-c"]
+    command: |
+      "
+      composer install --no-interaction --prefer-dist &&
+      php artisan key:generate &&
+       php artisan migrate --force && (php artisan db:seed --force || true) &&
+      php artisan serve --host=0.0.0.0 --port=8000
+      "
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - DB_CONNECTION=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_DATABASE=grievance
+      - DB_USERNAME=sail
+      - DB_PASSWORD=password
+      - MAIL_MAILER=log
+
+  mysql:
+    image: mysql:8.0
+    container_name: grievance-mysql
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: grievance
+      MYSQL_USER: sail
+      MYSQL_PASSWORD: password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "sail", "-ppassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mysql_data:

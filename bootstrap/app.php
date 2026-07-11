@@ -13,6 +13,6 @@ return Illuminate\Foundation\Application::configure(dirname(__DIR__))
             'role' => \App\Http\Middleware\CheckRole::class,
         ]);
     })
-    ->withExceptions(function (\Illuminate\Foundation\Exceptions\Handler $exceptions) {
+    ->withExceptions(function (\Illuminate\Foundation\Configuration\Exceptions $exceptions) {
         //
     })->create();
