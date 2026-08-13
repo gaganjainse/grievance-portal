@@ -14,3 +14,14 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+
+  # Upstream-blocked (security_update_not_possible): the patched
+  # guzzle/commonmark versions exceed what the installed Laravel chain
+  # resolves — re-check when composer.lock moves to a newer Laravel.
+  - package-ecosystem: "composer"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "guzzlehttp/guzzle"
+      - dependency-name: "league/commonmark"
