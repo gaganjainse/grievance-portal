@@ -9,17 +9,28 @@ on:
 permissions: read-all
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+
+      - name: PHP lint (syntax check every file)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq php-cli composer
+          find . -name "*.php" -not -path "./vendor/*" -not -path "./node_modules/*" \
+            -print0 | xargs -0 -n1 php -l
+
+      - name: Composer install (deps resolve check)
+        run: composer install --no-interaction --prefer-dist --no-progress
+
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
-          cache: npm
-      - name: Install
-        run: npm ci --no-audit --no-fund 2>/dev/null || npm install --no-audit --no-fund
-      - name: Build
-        run: npm run build 2>/dev/null || npm test 2>/dev/null || echo "no build script — install gate passed"
+
+      - name: npm install + build
+        run: |
+          npm install --no-audit --no-fund
+          npm run build
