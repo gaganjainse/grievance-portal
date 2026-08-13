@@ -23,6 +23,11 @@ jobs:
           find . -name "*.php" -not -path "./vendor/*" -not -path "./node_modules/*" \
             -print0 | xargs -0 -n1 php -l
 
+      - name: Laravel runtime dirs (bootstrap/cache etc. for package:discover)
+        run: |
+          mkdir -p bootstrap/cache storage/framework/sessions storage/framework/views storage/framework/cache
+          chmod -R 777 bootstrap/cache storage/framework
+
       - name: Composer install (deps resolve check)
         run: composer install --no-interaction --prefer-dist --no-progress
 
