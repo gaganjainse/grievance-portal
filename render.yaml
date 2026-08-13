@@ -1,0 +1,34 @@
+# Render Blueprint — grievance-portal (Laravel 12 + MySQL)
+# Deploy: push to GitHub, then "New +" -> "Blueprint" -> select this repo.
+# Generate APP_KEY locally with `php artisan key:generate --show` and paste it
+# in the Render dashboard when prompted.
+services:
+  - type: web
+    name: grievance-portal
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_URL
+        value: https://grievance-portal.onrender.com
+      - key: APP_KEY
+        sync: false # paste `php artisan key:generate --show` output
+      - key: DB_CONNECTION
+        value: mysql
+      - key: DB_PORT
+        value: "3306"
+      - key: DB_DATABASE
+        value: grievance_portal
+      - key: DB_HOST
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: FILESYSTEM_DISK
+        value: local
