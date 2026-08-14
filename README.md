@@ -1,6 +1,10 @@
 # Citizen Grievance Redressal Portal
 
-A multi-role Laravel 11 web application for citizens to file grievances and for government officers/admins to resolve them.
+![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=for-the-badge&logo=php)
+![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?style=for-the-badge&logo=laravel)
+![License](https://img.shields.io/badge/License-Apache--2.0-blue?style=for-the-badge)
+
+A multi-role Laravel 12 web application for citizens to file grievances and for government officers/admins to resolve them.
 
 ## Features
 
