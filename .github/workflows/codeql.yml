@@ -1,6 +1,6 @@
 # CodeQL — static analysis for this repo. SHA-pinned actions; stricter than
 # the GitHub default (security-extended + quality queries).
-# PHP isn't a CodeQL language; the Laravel frontend JS + our workflows are scanned.
+# PHP and the negligible frontend JS aren't analyzable — 'actions' scans our workflows.
 name: CodeQL
 
 on:
@@ -24,8 +24,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - language: javascript-typescript
-            build-mode: none
           - language: actions
             build-mode: none
     steps:
