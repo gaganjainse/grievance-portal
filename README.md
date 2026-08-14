@@ -3,7 +3,7 @@
 > **Citizen Grievance Redressal Portal.** A multi-role Laravel web application for
 > citizens to file grievances and for government officers/admins to resolve them.
 
-![PHP](https://img.shields.io/badge/PHP-8.3%2B-777BB4?style=for-the-badge&logo=php) ![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?style=for-the-badge&logo=laravel) ![License](https://img.shields.io/badge/License-GPL--3.0--or--later-blue?style=for-the-badge) ![CI](https://github.com/gaganjainse/grievance-portal/actions/workflows/ci.yml.yml/badge.svg)
+![PHP](https://img.shields.io/badge/PHP-8.3%2B-777BB4?style=for-the-badge&logo=php) ![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?style=for-the-badge&logo=laravel) ![License](https://img.shields.io/badge/License-GPL--3.0--or--later-blue?style=for-the-badge) ![CI](https://img.shields.io/github/actions/workflow/status/gaganjainse/grievance-portal/ci.yml?style=for-the-badge&label=CI)
 
 - **License:** GPL-3.0-or-later
 - **Owner:** Gagan Jain ([@gaganjainse](https://github.com/gaganjainse))
