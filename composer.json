@@ -5,7 +5,7 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^12.61.1",
-        "laravel/tinker": "^2.9",
+        "laravel/tinker": "^3.0",
         "laravel/sanctum": "^4.0",
         "giggsey/libphonenumber-for-php": "^8.0"
     },
